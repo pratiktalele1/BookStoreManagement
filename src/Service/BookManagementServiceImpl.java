@@ -22,6 +22,7 @@ public class BookManagementServiceImpl implements IBookManagementService {
 				.collect(Collectors.toList()).get(0);
 		Customer customer=customerService.getCustomer(customers);
 		saveBookTransitionDetails(customer,book,getBookNameFromCustomer().get(1),bookManagements);
+		
 	}
 
 	private List<String> getBookNameFromCustomer() {
@@ -47,8 +48,7 @@ public class BookManagementServiceImpl implements IBookManagementService {
 		bookManagement.setDataOfReturn(newDate);
 		bookManagement.setQuantity((Integer.valueOf(quantity)));
 		bookManagement.setTotalBillAmount((Integer.valueOf(quantity))*book.getPrice());
-		
 		bookManagements.add(bookManagement);
-		
+		bookManagement.setQuantity(bookManagement.getQuantity()-(Integer.valueOf(quantity)));
 	}
 }
