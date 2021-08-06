@@ -7,12 +7,12 @@ import Model.Customer;
 
 public class CustomerServiceImpl implements ICustomerService {
 	Scanner scanInput = new Scanner(System.in);
-	Customer customer = new Customer();
 	int i = 0;
 
 	@Override
-	public void addCustomer(List<Customer> customers) {
+	public Customer getCustomer(List<Customer> customers) {
 		int i = 0;
+		Customer customer = new Customer();
 		do {
 
 			System.out.println("enter customer id");
@@ -36,8 +36,6 @@ public class CustomerServiceImpl implements ICustomerService {
 				long mobileNumber = scanInput.nextLong();
 				customer.setMobileNumber(mobileNumber);
 
-				customers.add(customer);
-
 			}
 
 			System.out.print("want to repeat - ");
@@ -45,5 +43,6 @@ public class CustomerServiceImpl implements ICustomerService {
 
 		} while (i == 1);
 
+		return customer;
 	}
 }
