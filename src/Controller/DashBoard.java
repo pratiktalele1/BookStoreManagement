@@ -1,12 +1,16 @@
 package Controller;
 
-import java.awt.print.Book;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import Model.Book;
 import Model.BookManagement;
 import Model.Customer;
+import Service.BookManagementServiceImpl;
+import Service.BookServiceImpl;
+import Service.IBookService;
 
 public class DashBoard {
 
@@ -14,10 +18,13 @@ public class DashBoard {
 	List<Book> books = new ArrayList<Book>();
 	List<BookManagement> bookManagements = new ArrayList<BookManagement>();
 	
+	IBookService bookService=new BookServiceImpl();
+	
 	static Scanner scanInput = new Scanner(System.in);
 	
 	public void menu() {
 		int i = 0;
+		
 		
 		do {
 			System.out.print("1->add book \t 2-> buy book ");
@@ -26,7 +33,7 @@ public class DashBoard {
 
 			switch (getUserInput) {
 			case 1: {
-				
+					bookService.addBook(books);
 				break;
 			}
 			case 2: {
@@ -43,6 +50,7 @@ public class DashBoard {
 	
 
 	public static void main(String[] args) {
-
+		DashBoard board=new DashBoard();
+		board.menu();
 	}
 }

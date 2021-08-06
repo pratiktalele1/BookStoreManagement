@@ -17,13 +17,13 @@ public class BookServiceImpl implements IBookService {
 
 			System.out.println("enter book id");
 			int getId = scanInput.nextInt();
-			book.setId(getId);
+			
 
 			if (books.stream().map(data -> data.getId()).anyMatch(data -> data == getId)) {
 				System.out.print("book allready present - ");
 
 			} else {
-
+				book.setId(getId);
 				System.out.print("Enter book name- ");
 				String bookName = scanInput.next();
 				book.setBookName(bookName);
